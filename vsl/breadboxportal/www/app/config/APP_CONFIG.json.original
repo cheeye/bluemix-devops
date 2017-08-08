@@ -1,0 +1,4 @@
+{
+  "listService": "https://listservice-dev.mybluemix.net",
+  "poService" :"https://poservice-dev.mybluemix.net"
+}

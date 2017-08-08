@@ -1,0 +1,45 @@
+<!doctype html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<title ng-bind="title"></title>
+		<link href="css/web.css" rel="stylesheet">
+		<link href="css/metro.min.css" rel="stylesheet">
+		<link href="css/metro-responsive.min.css" rel="stylesheet">
+
+		<script>
+			var BOOTSTRAP = {"appName":"Bread Box Grocery"};
+		</script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/demo.js"></script>
+		<script src="js/metro.min.js"></script>
+		<script>
+			angular.module('app', [])
+			      .run(['$rootScope', function($rootScope) {
+			        $rootScope.appName = BOOTSTRAP && BOOTSTRAP.appName || null;
+			        $rootScope.title = $rootScope.appName && $rootScope.appName;
+			      }]);
+		</script>
+	</head>
+	<body>
+	<div class="test-header">
+		<div class="header-logo"><img src="./img/BB.png" class="header-image"></img></div>
+		<div class="header-title">IBM <div class="bold-title">Systems Hybrid Cloud Showcase</div></div>
+	</div>
+		<div class="flex-grid">
+			<div class="row cell-auto-size">
+				<div class="phone cell" style="text-align:center">
+					<iframe id="phone-frame" class="frame" src="app/index.html"></iframe>
+					<button id="showButton" style="position:absolute; display:none; right:0%; top: 4.3em" onclick="showClick()" class="hideshow-buttons">Show</button>
+				</div>
+				<div class="cell" onmouseover="revealHideButton(true)" onmouseout="revealHideButton(false)" id="canvasCell">
+					<button id="hideButton" style="display:none; position:absolute; right: 0%; top: 4.3em" onclick="hideClick()" class="hideshow-buttons">Hide</button>
+					<canvas class="information" id="infocanvas" width="1000" height="740"></canvas>
+				</div>
+			</div>
+		</div>
+		<div class="footer"><div class="ibm">© Copyright IBM Corp. 2017</div></div>
+	</body>
+
+</html>
