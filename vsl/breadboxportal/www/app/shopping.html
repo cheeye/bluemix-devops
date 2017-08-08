@@ -1,0 +1,46 @@
+<ion-view>
+	<ion-nav-title style="color:black">
+		My Shopping List
+	</ion-nav-title>
+	<ion-content scroll="false" class="has-header shoppingList" ng-click="hideDelete($event)">
+		<div class="list item-input-inset" style="margin-top:0px; margin-bottom:5px">
+			<label class="item item-input-wrapper" id="addBox">
+				<input type="text" placeholder="Add an item..." id="addInput" ng-model="box" ng-click="showKeyboard()">
+			</label>
+			<a class="button button-icon icon ion-plus energized" ng-click="addItem()" id="addButton" ng-disabled="!box"></a>
+		</div>
+		<ion-scroll style="height:80.5%">
+			<div style="width:100%; margin-bottom:10px" class="list">
+				<div class="item" ng-repeat="recommended in suggestions" style="background-color: rgba(255,255,255,.3); height:3em; padding-top: 12px;">
+					<p style="width: 80%;white-space: normal;margin-top:-0.6em">{{recommended.name}} - {{recommended.reason}}</p>
+					<a class="button button-icon icon ion-plus energized" ng-click="addRecommended(recommended)" style="position:absolute; right:0.7em; top:0"></a>
+				</div>
+			</div>
+			<div class="list groceryList" style="height:100%; background: rgba(0,0,0,0); margin-bottom:8px;">
+				<div class="item item-checkbox grocery" ng-repeat="groceryItem in list.items" style="text-decoration:{{groceryItem.decoration}}"
+				on-swipe-left="removeItem(groceryItem)">
+					<label class="checkbox checkbox-square checkbox-energized" style="width:85%;">
+						<input type="checkbox" ng-model="groceryItem.checked" ng-click="checked(groceryItem)" />
+					</label>{{groceryItem.name}}
+				</div>
+			</div>
+		</ion-scroll>
+	</ion-content>
+	<div class="bar bar-footer bar-energized" ng-click="hideSuggestions()">
+		<div ng-if="list.items.length == 0">
+			<button class="button button-dark" ng-click="" style="position:absolute; bottom:5px; width:45%; left: 15px; height:25px;">Delete List</button>
+			<button class="button button-dark" ng-click="" style="position:absolute; bottom:5px; width:45%; height:25px; right:15px">Delete Checked</button>
+		</div>
+		<div ng-if="list.items.length != 0">
+			<button class="button button-assertive" ng-click="removeAll()" style="position:absolute; bottom:5px; display:{{visibility}}; width:45%; left: 15px; height:25px;">Delete List</button>
+			<div ng-if="list.numberChecked() == 0">
+				<button class="button button-dark" ng-click="" style="position:absolute; bottom:5px; display:{{visibility}}; width:45%; height:25px; right:15px">Delete Checked</button>
+			</div>
+			<div ng-if="list.numberChecked() != 0">
+				<button class="button button-assertive" ng-click="removeChecked()" style="position:absolute; bottom:5px; display:{{visibility}}; width:45%; height:25px; right:15px">Delete Checked</button>
+			</div>
+		</div>
+		<a class="button button-icon icon ion-close-circled dark button-large" style="display:block" ng-click="removeButtonClick()"
+		id="removeButton"></a>
+	</div>
+</ion-view>

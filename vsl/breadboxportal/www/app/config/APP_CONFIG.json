@@ -1,0 +1,4 @@
+{
+  "listService": "https://158.58.71.71:8300",
+  "poService" :"https://poservice-dev.mybluemix.net"
+}

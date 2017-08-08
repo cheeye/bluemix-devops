@@ -1,0 +1,13 @@
+---
+applications:
+- disk_quota: 1024M
+  name: vslrecws
+  domain: mybluemix.net
+  host: vsl-rec-ws
+  memory: 128M
+  instances: 1
+  timeout: 180
+  buildpack: sdk-for-nodejs
+  command: npm start
+  env:
+    OPENAPI_SPEC: /swagger/api
